@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-	<bean id="hello" class="com.daojian.springstudy.Hello">
+	<!-- <bean id="hello" class="com.daojian.springstudy.Hello">
 		<property name="name" value="daojian"></property>
+	</bean> -->
+	
+	<context:property-placeholder location="db.properties"/>
+	
+	<!-- <bean id="car" class="com.daojian.springstudy.Car">
+		<constructor-arg name="name">
+			<value><![CDATA[<上海>]]></value>
+		</constructor-arg>
+		<constructor-arg name="color" value="red"></constructor-arg>
+		<constructor-arg name="size" value="17"></constructor-arg>
+	</bean>
+	
+	
+	<bean id="car1" class="com.daojian.springstudy.Car">
+		<constructor-arg name="name">
+			<value><![CDATA[<北京>]]></value>
+		</constructor-arg>
+		<constructor-arg name="color" value="red"></constructor-arg>
+		<constructor-arg name="size" value="17"></constructor-arg>
+	</bean>
+	
+	<bean id="person" class="com.daojian.springstudy.Person"
+		p:name="daojian" depends-on="car" scope="singleton"></bean> -->
+		
+	
+	
+	<!-- <util:list id="carss">
+		<ref bean="car"/>
+		<ref bean="car1"/>
+	</util:list> -->
+	
+	<bean id="dataSource" class="com.daojian.springstudy.DataSource">
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="age" value="${age}"></property>
 	</bean>
 </beans>
