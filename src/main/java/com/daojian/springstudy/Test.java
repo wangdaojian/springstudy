@@ -41,7 +41,7 @@ public class Test {
 		us.add();*/
 		
 		ArithmeticCalculator ari = (ArithmeticCalculator) act.getBean(ArithmeticCalculator.class);
-		ari.add(1, 3);
+		ari.div(10, 0);
 		
 		//act.destroy();
 		
