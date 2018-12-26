@@ -140,9 +140,12 @@ public class HttpClient {
      * @throws Exception
      */
     public static HttpClientResult doPost(String url, Map<String, String> headers, Map<String, String> params) throws Exception {
-        // 创建httpClient对象
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-
+    	// 创建httpClient对象
+        //CloseableHttpClient httpClient = HttpClients.createDefault();
+    	CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
+                .setConnectionRequestTimeout(2000).setConnectTimeout(2000).setSocketTimeout(2000).build()).build();
+        
+        //HttpPost post = new HttpPost(url);
         // 创建http对象
         HttpPost httpPost = new HttpPost(url);
         /**
@@ -151,8 +154,8 @@ public class HttpClient {
          * 超时时间，单位毫秒。这个属性是新加的属性，因为目前版本是可以共享连接池的。
          * setSocketTimeout：请求获取数据的超时时间(即响应时间)，单位毫秒。 如果访问一个接口，多少时间内无法返回数据，就直接放弃此次调用。
          */
-        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
-        httpPost.setConfig(requestConfig);
+        /*RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
+        httpPost.setConfig(requestConfig);*/
         // 设置请求头
         /*httpPost.setHeader("Cookie", "");
         httpPost.setHeader("Connection", "keep-alive");
