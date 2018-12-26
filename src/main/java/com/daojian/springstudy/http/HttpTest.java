@@ -10,10 +10,10 @@ public class HttpTest {
 	
 	
 	public static void main(String[] args) {
-		long start = 32166312;
-		final long mil = 400;
-		int threads = 50;
-		final String money =  "429.78";
+		long start = 31602607;
+		final long mil = 500;
+		int threads = 20;
+		final String money =  "246.58";
 		
 		long startTime = System.currentTimeMillis();
 		
