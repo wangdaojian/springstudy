@@ -8,9 +8,9 @@ public class HttpTest {
 	
 	
 	public static void main(String[] args) {
-		long start = 28568901;
-		long mil = 200;
-		String money =  "254.18";
+		long start = 32637499;
+		long mil = 2000;
+		String money =  "5533.75";
 		
 		
 		long startTime = System.currentTimeMillis();
@@ -41,7 +41,7 @@ public class HttpTest {
 					}
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 			start += 1;
 		}
