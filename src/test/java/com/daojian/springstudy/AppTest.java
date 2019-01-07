@@ -12,6 +12,7 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		Random rdm = new Random();
 		System.out.println(rdm.nextInt(500));
@@ -19,6 +20,16 @@ public class AppTest
 		System.out.println(rdm.nextInt(500));
 		rdm = new Random();
 		System.out.println(rdm.nextInt(500));
+=======
+	
+	public static void main(String[] args) {
+		/*System.out.println(new Random().nextInt(100));
+		System.out.println(new Random().nextInt(100));
+		System.out.println(new Random().nextInt(100));*/
+		Integer t1 = new Integer(10);
+		Integer t2 = new Integer(10);
+		System.out.println(t1.equals(t2));
+>>>>>>> branch 'master' of https://github.com/wangdaojian/springstudy.git
 	}
 	
     /**

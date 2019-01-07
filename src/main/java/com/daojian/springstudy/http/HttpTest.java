@@ -1,6 +1,7 @@
 package com.daojian.springstudy.http;
 
-import java.net.SocketTimeoutException;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -14,27 +15,24 @@ public class HttpTest {
 	
 	
 	public static void main(String[] args) {
-		String[] moneys = {"203.75", "1382.71", "397.20", "3295.99", "6790.82", "480.94", 
-				"267.23", "6051.06", "2955.87"};
-		/*String[] moneys = {"10673.43", "12792.95", "31582.45", "12797.13", "10433.86", "12763.66", "4197.82", 
-				"614.82", "607.85", "9371.95", "31582.45", "487.78", "2225.16", "525.60", "18.64", "728.52", 
-				"321,89", "2106.49", "2099.78", "34.18", "429.05", "1437.79", "1691.32", "1994.31", "74.30", 
-				"34.12", "177.93", "4165.43", "119.14", "823.37", "538.43", "2204.13"};
-		*/ 
-		final List<String> moneyList= Arrays.asList(moneys);
-		System.out.println(moneyList);
-		long start = 35010960;//35013055
-		//long start = 34619022;//34590755
-		final long mil = 60;
-		int threads = 2;
-		final String money =  "464.14";
-		/*PrintStream ps;
-		try {
-			ps = new PrintStream("e:/log.txt");
-			System.setOut(ps);
-		} catch (FileNotFoundException e2) {
-			e2.printStackTrace();
-		} */
+		String[] moneys = {"12843.15", "12847.34", "10469.13", "4178.28", 
+				"611.96", "609.64", "489.85", "527.83", "18.72", "731.61", "323.61", 
+				"2096.67", "2090.00", "34.33", "427.05", "1431.09", "1698.54", 
+				"1985.01", "73.95", "33.97", "177.10", "4146.02", "119.61", "819.53", 
+				"430.34", "2193.86"};
+		final List<String> moneyList = Arrays.asList(moneys);
+		long start = 35556560;//35556560
+		//34238579 
+		final long mil = 4000;
+		int threads = 6;
+		final String money =  "307.06";
+		
+		try {  
+            PrintStream print=new PrintStream("E:\\testniu.txt");  //写好输出位置文件；
+            System.setOut(print);  
+        } catch (FileNotFoundException e) {  
+            e.printStackTrace();  
+        }  
 		
 		long startTime = System.currentTimeMillis();
 		
@@ -53,22 +51,21 @@ public class HttpTest {
             		long i = 0;
             		String url = "https://www.xiaoniu88.com/product/detail/5/";
             		for(i = 0; i<mil; i++) {
-            			String queryUrl = url + start;
             			try {
-            				Random rdm = new Random();
-							Thread.sleep(rdm.nextInt(100));
-						} catch (InterruptedException e1) {
+							Thread.sleep(new Random().nextInt(100));
+						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
+            			String queryUrl = url + start;
             			try {
-            				HttpClientResult result = HttpClient.doPost(queryUrl);
+            				/*HttpClientResult result = HttpClient.doPost(queryUrl);
             				if(result != null && StringUtils.hasLength(result.getContent())) {
             					JSONObject jsonObj = JSONObject.parseObject(result.getContent()).getJSONArray("data").getJSONObject(0);
             					String productName = jsonObj.getString("productName");
             					String productId = jsonObj.getString("productId");
             					String productAmount = jsonObj.getString("productAmount");
-            					//System.out.println("productName=" + productName + ", productId=" + productId + ", productAmount=" + productAmount);
             					//if(productAmount.equals(money)) {
+            					System.out.println("productName= " + productName + ", " + productId + ", productAmount=" + productAmount);
             					if(moneyList.contains(productAmount)) {
             						System.out.println("productName= " + productName + ", https://www.xiaoniu88.com/product/bid/detail/" + productId + ", productAmount=" + productAmount);
             						suc = true;
@@ -77,6 +74,20 @@ public class HttpTest {
             				}
             			} catch (SocketTimeoutException e) {
             				//e.printStackTrace();
+            				}*/
+            				String result = HttpRequest.post(queryUrl);
+            				if(result != null && StringUtils.hasLength(result)) {
+            					JSONObject jsonObj = JSONObject.parseObject(result).getJSONArray("data").getJSONObject(0);
+            					String productName = jsonObj.getString("productName");
+            					String productId = jsonObj.getString("productId");
+            					String productAmount = jsonObj.getString("productAmount");
+            					System.out.println("productName= " + productName + ", " + productId + ", productAmount=" + productAmount);
+            					if(moneyList.contains(productAmount)) {
+            						System.out.println("productName= " + productName + ", https://www.xiaoniu88.com/product/bid/detail/" + productId + ", productAmount=" + productAmount);
+            						suc = true;
+            						//break;
+            					}
+            				}
             			} catch (Exception e) {
             				//e.printStackTrace();
             			}
