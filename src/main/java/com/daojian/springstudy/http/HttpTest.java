@@ -16,15 +16,17 @@ public class HttpTest {
 	
 	public static void main(String[] args) {
 		String[] moneys = {"12843.15", "12847.34", "10469.13", "4178.28", 
-				"611.96", "609.64", "489.85", "527.83", "18.72", "731.61", "323.61", 
+				"611.96", "609.64", "489.85", "527.83", "18.72", "731.61", "323.26", 
 				"2096.67", "2090.00", "34.33", "427.05", "1431.09", "1698.54", 
 				"1985.01", "73.95", "33.97", "177.10", "4146.02", "119.61", "819.53", 
 				"430.34", "2193.86"};
+		/*String[] moneys = {"1543.47", "3979.93", "6404.27"};*/
 		final List<String> moneyList = Arrays.asList(moneys);
 		long start = 35556560;//35556560
+		//long start = 35223091;
 		//34238579 
-		final long mil = 4000;
-		int threads = 6;
+		final long mil = 12000;
+		int threads = 5;
 		final String money =  "307.06";
 		
 		try {  
@@ -52,13 +54,13 @@ public class HttpTest {
             		String url = "https://www.xiaoniu88.com/product/detail/5/";
             		for(i = 0; i<mil; i++) {
             			try {
-							Thread.sleep(new Random().nextInt(100));
+							Thread.sleep(new Random().nextInt(160));
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
             			String queryUrl = url + start;
             			try {
-            				/*HttpClientResult result = HttpClient.doPost(queryUrl);
+            				HttpClientResult result = HttpClient.doPost(queryUrl);
             				if(result != null && StringUtils.hasLength(result.getContent())) {
             					JSONObject jsonObj = JSONObject.parseObject(result.getContent()).getJSONArray("data").getJSONObject(0);
             					String productName = jsonObj.getString("productName");
@@ -72,10 +74,7 @@ public class HttpTest {
             						//break;
             					}
             				}
-            			} catch (SocketTimeoutException e) {
-            				//e.printStackTrace();
-            				}*/
-            				String result = HttpRequest.post(queryUrl);
+            				/*String result = HttpRequest.post(queryUrl);
             				if(result != null && StringUtils.hasLength(result)) {
             					JSONObject jsonObj = JSONObject.parseObject(result).getJSONArray("data").getJSONObject(0);
             					String productName = jsonObj.getString("productName");
@@ -87,7 +86,7 @@ public class HttpTest {
             						suc = true;
             						//break;
             					}
-            				}
+            				}*/
             			} catch (Exception e) {
             				//e.printStackTrace();
             			}

@@ -50,10 +50,10 @@ public class HttpRequest {
 		try {
 			HttpPost post = new HttpPost(url);
 			RequestConfig requestConfig = RequestConfig.custom()
-				      .setSocketTimeout(20000)//数据传输过程中数据包之间间隔的最大时间
-				      .setConnectTimeout(20000)//连接建立时间，三次握手完成时间
+				      .setSocketTimeout(5000)//数据传输过程中数据包之间间隔的最大时间
+				      .setConnectTimeout(5000)//连接建立时间，三次握手完成时间
 				      .setExpectContinueEnabled(true)//重点参数 
-				      .setConnectionRequestTimeout(10000)
+				      .setConnectionRequestTimeout(5000)
 				      .setStaleConnectionCheckEnabled(true)//重点参数，在请求之前校验链接是否有效
 				      .build();
 			httpResponse = httpClient.execute(post);
