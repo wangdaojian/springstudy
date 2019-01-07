@@ -103,6 +103,4 @@ public class HttpTest {
 		long milTime = System.currentTimeMillis() - startTime;
 		System.out.println(milTime);
 	}
-	
-	
 }

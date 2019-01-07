@@ -31,7 +31,7 @@ public class HttpClient {
     private static final String ENCODING = "UTF-8";
     
     // 设置连接超时时间，单位毫秒。
-    private static final int CONNECT_TIMEOUT = 5000;
+    private static final int CONNECT_TIMEOUT = 1000;
     
     // 请求获取数据的超时时间(即响应时间)，单位毫秒。
     private static final int SOCKET_TIMEOUT = 1000;
