@@ -1,5 +1,7 @@
 package com.daojian.springstudy;
 
+import java.util.Random;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,6 +12,15 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+	public static void main(String[] args) {
+		Random rdm = new Random();
+		System.out.println(rdm.nextInt(500));
+		rdm = new Random();
+		System.out.println(rdm.nextInt(500));
+		rdm = new Random();
+		System.out.println(rdm.nextInt(500));
+	}
+	
     /**
      * Create the test case
      *

@@ -143,7 +143,7 @@ public class HttpClient {
     	// 创建httpClient对象
         //CloseableHttpClient httpClient = HttpClients.createDefault();
     	CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom()
-                .setConnectionRequestTimeout(2000).setConnectTimeout(2000).setSocketTimeout(2000).build()).build();
+                .setConnectionRequestTimeout(3000).setConnectTimeout(3000).setSocketTimeout(3000).build()).build();
         
         //HttpPost post = new HttpPost(url);
         // 创建http对象
