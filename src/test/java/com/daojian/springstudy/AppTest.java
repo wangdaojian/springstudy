@@ -1,5 +1,7 @@
 package com.daojian.springstudy;
 
+import java.util.Random;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,6 +12,16 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+	
+	public static void main(String[] args) {
+		/*System.out.println(new Random().nextInt(100));
+		System.out.println(new Random().nextInt(100));
+		System.out.println(new Random().nextInt(100));*/
+		Integer t1 = new Integer(10);
+		Integer t2 = new Integer(10);
+		System.out.println(t1.equals(t2));
+	}
+	
     /**
      * Create the test case
      *
