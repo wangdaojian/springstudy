@@ -15,18 +15,21 @@ public class HttpTest {
 	
 	
 	public static void main(String[] args) {
-		String[] moneys = {"12843.15", "12847.34", "10469.13", "4178.28", 
+		/*String[] moneys = {"12843.15", "12847.34", "10469.13", "4178.28", 
 				"611.96", "609.64", "489.85", "527.83", "18.72", "731.61", "323.26", 
 				"2096.67", "2090.00", "34.33", "427.05", "1431.09", "1698.54", 
 				"1985.01", "73.95", "33.97", "177.10", "4146.02", "119.61", "819.53", 
-				"430.34", "2193.86"};
-		/*String[] moneys = {"1543.47", "3979.93", "6404.27"};*/
+				"430.34", "2193.86"};*/
+		/*String[] moneys = {"961.68", "1345.26", "179.14", "53.99", "176.54", "822.16", "167.65", "473.27", 
+				"170.62", "154.77", "551.81", "429.06", "1336.64"};*/
+		String[] moneys = {"2581.50", "5225.95", "695.25", "401.87", "3330.91", "1395.81", "3706.78", "293.59", 
+				"446.34"};
 		final List<String> moneyList = Arrays.asList(moneys);
-		long start = 35556560;//35556560
+		long start = 36436340;//35556560
 		//long start = 35223091;
 		//34238579 
-		final long mil = 12000;
-		int threads = 5;
+		final long mil = 20000;
+		int threads = 3;
 		final String money =  "307.06";
 		
 		try {  
@@ -65,14 +68,20 @@ public class HttpTest {
             					JSONObject jsonObj = JSONObject.parseObject(result.getContent()).getJSONArray("data").getJSONObject(0);
             					String productName = jsonObj.getString("productName");
             					String productId = jsonObj.getString("productId");
-            					String productAmount = jsonObj.getString("productAmount");
+            					String leftAmount = jsonObj.getString("leftAmount");
+            					Integer productTerm = jsonObj.getInteger("productTerm");
+            					int tsfProfitAmountRatio = (int)(jsonObj.getDoubleValue("tsfProfitAmountRatio")*100);
+            					if(tsfProfitAmountRatio >= 2 && productTerm < 16) {
+            						System.out.println(productName + ", id=" + productId + ", amount=" + leftAmount + ", ratio=" + tsfProfitAmountRatio + ", term=" + productTerm);
+            					}
             					//if(productAmount.equals(money)) {
-            					System.out.println("productName= " + productName + ", " + productId + ", productAmount=" + productAmount);
-            					if(moneyList.contains(productAmount)) {
-            						System.out.println("productName= " + productName + ", https://www.xiaoniu88.com/product/bid/detail/" + productId + ", productAmount=" + productAmount);
+            					
+            					
+            					/*if(moneyList.contains(leftAmount)) {
+            						System.out.println("productName= " + productName + ", https://www.xiaoniu88.com/product/bid/detail/" + productId + ", leftAmount=" + leftAmount);
             						suc = true;
             						//break;
-            					}
+            					}*/
             				}
             				/*String result = HttpRequest.post(queryUrl);
             				if(result != null && StringUtils.hasLength(result)) {
