@@ -22,18 +22,19 @@ public class HttpTest {
 				"2096.67", "2090.00", "34.33", "427.05", "1431.09", "1698.54", 
 				"1985.01", "73.95", "33.97", "177.10", "4146.02", "119.61", "819.53", 
 				"430.34", "2193.86"};*/
-		String[] moneys = {"695.25", "401.87", "3330.91", "1395.81", "3706.78", "293.59", "446.34",
-				"2581.50", "5225.95"};
+		/*String[] moneys = {"961.68", "1345.26", "179.14", "53.99", "176.54", "822.16", "167.65", "473.27", 
+				"170.62", "154.77", "551.81", "429.06", "1336.64"};*/
+		String[] moneys = {"2581.50", "5225.95", "695.25", "401.87", "3330.91", "1395.81", "3706.78", "293.59", 
+				"446.34"};
 		final List<String> moneyList = Arrays.asList(moneys);
 		long start = 36084046;//35556570
-		//long start = 35223091;
-		//34238579 
 		final long mil = 2000;
 		int threads = 3;
 		//final String money =  "307.06";
 		Date now = new Date();
 	    SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMddhhmm");
 	    String fileName = ft.format(now);
+		
 		try {  
             PrintStream print=new PrintStream("/testniu" + fileName + ".txt");  //写好输出位置文件
             System.setOut(print);  
@@ -71,10 +72,16 @@ public class HttpTest {
             					String productName = jsonObj.getString("productName");
             					String productId = jsonObj.getString("productId");
             					String productAmount = jsonObj.getString("productAmount");
-            					String leftAmount = jsonObj.getString("leftAmount");
             					String publishTime = jsonObj.getString("publishTime");
-            				    SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+            				    
+            					SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
             				    String publishDate = ft.format(new Date(Long.parseLong(publishTime)));
+            					String leftAmount = jsonObj.getString("leftAmount");
+            					Integer productTerm = jsonObj.getInteger("productTerm");
+            					int tsfProfitAmountRatio = (int)(jsonObj.getDoubleValue("tsfProfitAmountRatio")*100);
+            					if(tsfProfitAmountRatio >= 2 && productTerm < 16) {
+            						System.out.println(productName + ", id=" + productId + ", amount=" + leftAmount + ", ratio=" + tsfProfitAmountRatio + ", term=" + productTerm);
+            					}
             					//if(productAmount.equals(money)) {
             					System.out.println(publishDate + ": " + productName + ", " + productId + ", leftAmount=" + leftAmount + ", productAmount=" + productAmount);
             					/*if(moneyList.contains(productAmount) || moneyList.contains(leftAmount)) {
