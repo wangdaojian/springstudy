@@ -25,10 +25,10 @@ public class HttpTest {
 		String[] moneys = {"2581.50", "5225.95", "695.25", "401.87", "3330.91", "1395.81", "3706.78", "293.59", 
 				"446.34"};
 		final List<String> moneyList = Arrays.asList(moneys);
-		long start = 36436340;//35556560
+		long start = 36316340;//35556560
 		//long start = 35223091;
 		//34238579 
-		final long mil = 20000;
+		final long mil = 6000;
 		int threads = 3;
 		final String money =  "307.06";
 		
@@ -71,7 +71,7 @@ public class HttpTest {
             					String leftAmount = jsonObj.getString("leftAmount");
             					Integer productTerm = jsonObj.getInteger("productTerm");
             					int tsfProfitAmountRatio = (int)(jsonObj.getDoubleValue("tsfProfitAmountRatio")*100);
-            					if(tsfProfitAmountRatio >= 2 && productTerm < 16) {
+            					if(tsfProfitAmountRatio >= 1 && productTerm < 30) {
             						System.out.println(productName + ", id=" + productId + ", amount=" + leftAmount + ", ratio=" + tsfProfitAmountRatio + ", term=" + productTerm);
             					}
             					//if(productAmount.equals(money)) {
